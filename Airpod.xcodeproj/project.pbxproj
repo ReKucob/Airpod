@@ -1,0 +1,595 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		60B4C2F2235537C60073D9CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B4C2F1235537C60073D9CE /* AppDelegate.swift */; };
+		60B4C2F4235537C60073D9CE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B4C2F3235537C60073D9CE /* SceneDelegate.swift */; };
+		60B4C2F6235537C60073D9CE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B4C2F5235537C60073D9CE /* ViewController.swift */; };
+		60B4C2F9235537C60073D9CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60B4C2F7235537C60073D9CE /* Main.storyboard */; };
+		60B4C2FB235537C70073D9CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60B4C2FA235537C70073D9CE /* Assets.xcassets */; };
+		60B4C2FE235537C70073D9CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60B4C2FC235537C70073D9CE /* LaunchScreen.storyboard */; };
+		60B4C309235537C70073D9CE /* AirpodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B4C308235537C70073D9CE /* AirpodTests.swift */; };
+		60B4C314235537C80073D9CE /* AirpodUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B4C313235537C80073D9CE /* AirpodUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		60B4C305235537C70073D9CE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 60B4C2E6235537C60073D9CE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 60B4C2ED235537C60073D9CE;
+			remoteInfo = Airpod;
+		};
+		60B4C310235537C80073D9CE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 60B4C2E6235537C60073D9CE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 60B4C2ED235537C60073D9CE;
+			remoteInfo = Airpod;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		60B4C2EE235537C60073D9CE /* Airpod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Airpod.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		60B4C2F1235537C60073D9CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		60B4C2F3235537C60073D9CE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		60B4C2F5235537C60073D9CE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		60B4C2F8235537C60073D9CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		60B4C2FA235537C70073D9CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		60B4C2FD235537C70073D9CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		60B4C2FF235537C70073D9CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		60B4C304235537C70073D9CE /* AirpodTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AirpodTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		60B4C308235537C70073D9CE /* AirpodTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirpodTests.swift; sourceTree = "<group>"; };
+		60B4C30A235537C70073D9CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		60B4C30F235537C80073D9CE /* AirpodUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AirpodUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		60B4C313235537C80073D9CE /* AirpodUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirpodUITests.swift; sourceTree = "<group>"; };
+		60B4C315235537C80073D9CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		60B4C2EB235537C60073D9CE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60B4C301235537C70073D9CE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60B4C30C235537C70073D9CE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		60B4C2E5235537C60073D9CE = {
+			isa = PBXGroup;
+			children = (
+				60B4C2F0235537C60073D9CE /* Airpod */,
+				60B4C307235537C70073D9CE /* AirpodTests */,
+				60B4C312235537C80073D9CE /* AirpodUITests */,
+				60B4C2EF235537C60073D9CE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		60B4C2EF235537C60073D9CE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				60B4C2EE235537C60073D9CE /* Airpod.app */,
+				60B4C304235537C70073D9CE /* AirpodTests.xctest */,
+				60B4C30F235537C80073D9CE /* AirpodUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		60B4C2F0235537C60073D9CE /* Airpod */ = {
+			isa = PBXGroup;
+			children = (
+				60B4C2F1235537C60073D9CE /* AppDelegate.swift */,
+				60B4C2F3235537C60073D9CE /* SceneDelegate.swift */,
+				60B4C2F5235537C60073D9CE /* ViewController.swift */,
+				60B4C2F7235537C60073D9CE /* Main.storyboard */,
+				60B4C2FA235537C70073D9CE /* Assets.xcassets */,
+				60B4C2FC235537C70073D9CE /* LaunchScreen.storyboard */,
+				60B4C2FF235537C70073D9CE /* Info.plist */,
+			);
+			path = Airpod;
+			sourceTree = "<group>";
+		};
+		60B4C307235537C70073D9CE /* AirpodTests */ = {
+			isa = PBXGroup;
+			children = (
+				60B4C308235537C70073D9CE /* AirpodTests.swift */,
+				60B4C30A235537C70073D9CE /* Info.plist */,
+			);
+			path = AirpodTests;
+			sourceTree = "<group>";
+		};
+		60B4C312235537C80073D9CE /* AirpodUITests */ = {
+			isa = PBXGroup;
+			children = (
+				60B4C313235537C80073D9CE /* AirpodUITests.swift */,
+				60B4C315235537C80073D9CE /* Info.plist */,
+			);
+			path = AirpodUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		60B4C2ED235537C60073D9CE /* Airpod */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 60B4C318235537C80073D9CE /* Build configuration list for PBXNativeTarget "Airpod" */;
+			buildPhases = (
+				60B4C2EA235537C60073D9CE /* Sources */,
+				60B4C2EB235537C60073D9CE /* Frameworks */,
+				60B4C2EC235537C60073D9CE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Airpod;
+			productName = Airpod;
+			productReference = 60B4C2EE235537C60073D9CE /* Airpod.app */;
+			productType = "com.apple.product-type.application";
+		};
+		60B4C303235537C70073D9CE /* AirpodTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 60B4C31B235537C80073D9CE /* Build configuration list for PBXNativeTarget "AirpodTests" */;
+			buildPhases = (
+				60B4C300235537C70073D9CE /* Sources */,
+				60B4C301235537C70073D9CE /* Frameworks */,
+				60B4C302235537C70073D9CE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				60B4C306235537C70073D9CE /* PBXTargetDependency */,
+			);
+			name = AirpodTests;
+			productName = AirpodTests;
+			productReference = 60B4C304235537C70073D9CE /* AirpodTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		60B4C30E235537C70073D9CE /* AirpodUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 60B4C31E235537C80073D9CE /* Build configuration list for PBXNativeTarget "AirpodUITests" */;
+			buildPhases = (
+				60B4C30B235537C70073D9CE /* Sources */,
+				60B4C30C235537C70073D9CE /* Frameworks */,
+				60B4C30D235537C70073D9CE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				60B4C311235537C80073D9CE /* PBXTargetDependency */,
+			);
+			name = AirpodUITests;
+			productName = AirpodUITests;
+			productReference = 60B4C30F235537C80073D9CE /* AirpodUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		60B4C2E6235537C60073D9CE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1110;
+				LastUpgradeCheck = 1110;
+				ORGANIZATIONNAME = "Group 6";
+				TargetAttributes = {
+					60B4C2ED235537C60073D9CE = {
+						CreatedOnToolsVersion = 11.1;
+					};
+					60B4C303235537C70073D9CE = {
+						CreatedOnToolsVersion = 11.1;
+						TestTargetID = 60B4C2ED235537C60073D9CE;
+					};
+					60B4C30E235537C70073D9CE = {
+						CreatedOnToolsVersion = 11.1;
+						TestTargetID = 60B4C2ED235537C60073D9CE;
+					};
+				};
+			};
+			buildConfigurationList = 60B4C2E9235537C60073D9CE /* Build configuration list for PBXProject "Airpod" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 60B4C2E5235537C60073D9CE;
+			productRefGroup = 60B4C2EF235537C60073D9CE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				60B4C2ED235537C60073D9CE /* Airpod */,
+				60B4C303235537C70073D9CE /* AirpodTests */,
+				60B4C30E235537C70073D9CE /* AirpodUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		60B4C2EC235537C60073D9CE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60B4C2FE235537C70073D9CE /* LaunchScreen.storyboard in Resources */,
+				60B4C2FB235537C70073D9CE /* Assets.xcassets in Resources */,
+				60B4C2F9235537C60073D9CE /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60B4C302235537C70073D9CE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60B4C30D235537C70073D9CE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		60B4C2EA235537C60073D9CE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60B4C2F6235537C60073D9CE /* ViewController.swift in Sources */,
+				60B4C2F2235537C60073D9CE /* AppDelegate.swift in Sources */,
+				60B4C2F4235537C60073D9CE /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60B4C300235537C70073D9CE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60B4C309235537C70073D9CE /* AirpodTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60B4C30B235537C70073D9CE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60B4C314235537C80073D9CE /* AirpodUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		60B4C306235537C70073D9CE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 60B4C2ED235537C60073D9CE /* Airpod */;
+			targetProxy = 60B4C305235537C70073D9CE /* PBXContainerItemProxy */;
+		};
+		60B4C311235537C80073D9CE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 60B4C2ED235537C60073D9CE /* Airpod */;
+			targetProxy = 60B4C310235537C80073D9CE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		60B4C2F7235537C60073D9CE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				60B4C2F8235537C60073D9CE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		60B4C2FC235537C70073D9CE /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				60B4C2FD235537C70073D9CE /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		60B4C316235537C80073D9CE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		60B4C317235537C80073D9CE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		60B4C319235537C80073D9CE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2G75BSB8D4;
+				INFOPLIST_FILE = Airpod/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = group6.Airpod;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		60B4C31A235537C80073D9CE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2G75BSB8D4;
+				INFOPLIST_FILE = Airpod/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = group6.Airpod;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		60B4C31C235537C80073D9CE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2G75BSB8D4;
+				INFOPLIST_FILE = AirpodTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = group6.AirpodTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Airpod.app/Airpod";
+			};
+			name = Debug;
+		};
+		60B4C31D235537C80073D9CE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2G75BSB8D4;
+				INFOPLIST_FILE = AirpodTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = group6.AirpodTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Airpod.app/Airpod";
+			};
+			name = Release;
+		};
+		60B4C31F235537C80073D9CE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2G75BSB8D4;
+				INFOPLIST_FILE = AirpodUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = group6.AirpodUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Airpod;
+			};
+			name = Debug;
+		};
+		60B4C320235537C80073D9CE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2G75BSB8D4;
+				INFOPLIST_FILE = AirpodUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = group6.AirpodUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Airpod;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		60B4C2E9235537C60073D9CE /* Build configuration list for PBXProject "Airpod" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				60B4C316235537C80073D9CE /* Debug */,
+				60B4C317235537C80073D9CE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		60B4C318235537C80073D9CE /* Build configuration list for PBXNativeTarget "Airpod" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				60B4C319235537C80073D9CE /* Debug */,
+				60B4C31A235537C80073D9CE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		60B4C31B235537C80073D9CE /* Build configuration list for PBXNativeTarget "AirpodTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				60B4C31C235537C80073D9CE /* Debug */,
+				60B4C31D235537C80073D9CE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		60B4C31E235537C80073D9CE /* Build configuration list for PBXNativeTarget "AirpodUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				60B4C31F235537C80073D9CE /* Debug */,
+				60B4C320235537C80073D9CE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 60B4C2E6235537C60073D9CE /* Project object */;
+}
