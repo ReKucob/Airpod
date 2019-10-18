@@ -1,0 +1,6 @@
+framework module Pods_Airpod {
+  umbrella header "Pods-Airpod-umbrella.h"
+
+  export *
+  module * { export * }
+}
