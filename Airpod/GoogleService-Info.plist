@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>118297253838-lrhc5vcjknqrf1pe0apljfif9rjbgvm5.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.118297253838-lrhc5vcjknqrf1pe0apljfif9rjbgvm5</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCl4g6rtVT-1siVzJ3au-3NxkIyhqkdrlA</string>
+	<key>GCM_SENDER_ID</key>
+	<string>118297253838</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>group6.Airpod</string>
+	<key>PROJECT_ID</key>
+	<string>assignment3-87b10</string>
+	<key>STORAGE_BUCKET</key>
+	<string>assignment3-87b10.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:118297253838:ios:68bb8f5a1e6f1df3397d9f</string>
+	<key>DATABASE_URL</key>
+	<string>https://assignment3-87b10.firebaseio.com</string>
+</dict>
+</plist>

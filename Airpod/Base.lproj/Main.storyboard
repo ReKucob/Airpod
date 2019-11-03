@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,33 +15,116 @@
                     <view key="view" contentMode="scaleToFill" id="IRJ-i2-xMk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cBZ-A5-olh" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="118" width="414" height="488"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Sc5-bZ-Bgg">
+                                <rect key="frame" x="20" y="627" width="374" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Day"/>
+                                    <segment title="Week"/>
+                                    <segment title="Month"/>
+                                </segments>
+                            </segmentedControl>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="cBZ-A5-olh" firstAttribute="top" secondItem="wgq-xu-9sX" secondAttribute="top" constant="74" id="2kB-lS-cQy"/>
+                            <constraint firstItem="cBZ-A5-olh" firstAttribute="trailing" secondItem="wgq-xu-9sX" secondAttribute="trailing" id="G7M-VB-d3U"/>
+                            <constraint firstItem="cBZ-A5-olh" firstAttribute="leading" secondItem="wgq-xu-9sX" secondAttribute="leading" id="PmM-te-eAy"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="wgq-xu-9sX"/>
                     </view>
-                    <tabBarItem key="tabBarItem" selectedImage="doc" catalog="system" id="x6K-5l-jJg"/>
+                    <tabBarItem key="tabBarItem" selectedImage="doc" catalog="system" systemItem="downloads" id="x6K-5l-jJg"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rPL-tn-lBz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="603" y="481"/>
+            <point key="canvasLocation" x="602.89855072463774" y="480.80357142857139"/>
         </scene>
-        <!--Item-->
+        <!--View Controller-->
         <scene sceneID="4nL-rM-5Be">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lHH-5y-rqm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="OKi-fJ-Kff" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rQh-5w-WXT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" indicatorStyle="black" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ZwA-QE-Dug">
+                                <rect key="frame" x="0.0" y="66" width="414" height="747"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="L9Y-rU-Vck">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="OcP-lO-uag">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="l6d-ZJ-Emn">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="GUq-Rz-TE4">
+                                        <rect key="frame" x="60.5" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Nco-He-7qi">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="3uV-UD-mKX">
+                                        <rect key="frame" x="121.5" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ZHz-fE-qDg">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="8gN-t4-RGX">
+                                        <rect key="frame" x="182" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="okM-Rz-dr3">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="I3q-M6-XRD">
+                                        <rect key="frame" x="242.5" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="TJ1-px-G7T">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="PPm-1D-Sb6">
+                                        <rect key="frame" x="303.5" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="BrG-pn-rlF">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="nuW-hO-XDy"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="Zvc-ml-Db6"/>
+                    <tabBarItem key="tabBarItem" systemItem="mostViewed" id="Zvc-ml-Db6"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lHH-5y-rqm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-429" y="828"/>
+            <point key="canvasLocation" x="-430.43478260869568" y="827.67857142857144"/>
         </scene>
-        <!--Item 1-->
+        <!--View Controller-->
         <scene sceneID="XSo-sm-i4O">
             <objects>
                 <viewController id="vvQ-4V-jL7" sceneMemberID="viewController">
@@ -50,13 +134,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="i36-ag-Yam"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="hEc-dX-NYM"/>
+                    <tabBarItem key="tabBarItem" systemItem="topRated" id="hEc-dX-NYM"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hxZ-J4-J6y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="603" y="-279"/>
         </scene>
-        <!--Item-->
+        <!--View Controller-->
         <scene sceneID="Th9-yW-c7j">
             <objects>
                 <viewController id="z5M-FC-npM" sceneMemberID="viewController">
@@ -66,27 +150,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="i4s-6o-qwg"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="9Yh-1m-peG"/>
+                    <tabBarItem key="tabBarItem" systemItem="more" id="9Yh-1m-peG"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1dg-Rz-RXx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="603" y="-1061"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="bBU-zQ-SUZ">
-            <objects>
-                <viewController id="6tk-Kz-N2O" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="QPA-24-4Z9">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="sfU-Z9-lib"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="e2W-zI-Ein"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jUK-DT-epl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1431" y="-1066"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="8aV-aM-lpr">
