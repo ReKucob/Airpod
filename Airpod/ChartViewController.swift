@@ -11,13 +11,28 @@ import Charts
 
 class ChartViewController: UIViewController, DatabaseListener {
     
+    var indexText = "days"
+    
     //MARK: - Receive data
     var officerList: [officerData] = []
     weak var firebaseController: DatabaseProtocol?
 
     //MARK:  - Elements on the screen
     @IBOutlet weak var lineChartVIew: LineChartView!
-    @IBAction func switchButton(_ sender: UISegmentedControl) {
+    
+    @IBOutlet weak var segmentC: UISegmentedControl!
+    
+    @IBAction func switchButton(_ sender: Any) {
+        let getIndex = segmentC.selectedSegmentIndex
+      
+        switch(getIndex){
+        case 1:
+            indexText = "Week"
+        case 2:
+            indexText = "month"
+        default:
+            indexText = "days"
+        }
     }
     
     // MARK: - Preparation of Chart view
@@ -46,6 +61,8 @@ class ChartViewController: UIViewController, DatabaseListener {
         officerList = OfficerDatas
         var lineChartEntry = [ChartDataEntry]()
         
+        if (indexText == "days")
+        {
         for data in officerList{
             let xvalue1 = lineChartEntry.count + 1
             let value = ChartDataEntry(x: Double(xvalue1), y: data.AQI!)
@@ -60,6 +77,41 @@ class ChartViewController: UIViewController, DatabaseListener {
         
         lineChartVIew.data = status
         lineChartVIew.chartDescription?.text = "AQI"
+        }
+        else if (indexText == "weeks")
+        {
+            for data in officerList{
+                let xvalue1 = lineChartEntry.count + 1
+                let value = ChartDataEntry(x: Double(xvalue1), y: data.AQI!)
+                lineChartEntry.append(value)
+            }
+            
+            let line = LineChartDataSet(entries: lineChartEntry, label: "Air Quality")
+            line.colors = [NSUIColor.green]
+
+            let status = LineChartData()
+            status.addDataSet(line)
+            
+            lineChartVIew.data = status
+            lineChartVIew.chartDescription?.text = "AQI"
+        }
+        else if (indexText == "month")
+        {
+            for data in officerList{
+                let xvalue1 = lineChartEntry.count + 1
+                let value = ChartDataEntry(x: Double(xvalue1), y: data.AQI!)
+                lineChartEntry.append(value)
+            }
+            
+            let line = LineChartDataSet(entries: lineChartEntry, label: "Air Quality")
+            line.colors = [NSUIColor.red]
+
+            let status = LineChartData()
+            status.addDataSet(line)
+            
+            lineChartVIew.data = status
+            lineChartVIew.chartDescription?.text = "AQI"
+        }
     }
 
 }

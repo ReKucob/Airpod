@@ -11,6 +11,8 @@
 		603141B9236F03C3001BCA76 /* officerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603141B8236F03C3001BCA76 /* officerData.swift */; };
 		603141BB236F0513001BCA76 /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603141BA236F0513001BCA76 /* MulticastDelegate.swift */; };
 		607CC7A7237417E9000B9940 /* ProgressVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607CC7A6237417E9000B9940 /* ProgressVIew.swift */; };
+		607CC7A923744850000B9940 /* tableCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607CC7A823744850000B9940 /* tableCollectionViewCell.swift */; };
+		607CC7AB23744877000B9940 /* tableCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607CC7AA23744877000B9940 /* tableCollectionViewController.swift */; };
 		609F4EC4236E86610077D9AE /* DatabaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609F4EC3236E86610077D9AE /* DatabaseProtocol.swift */; };
 		609F4EC6236E87540077D9AE /* FirebaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609F4EC5236E87540077D9AE /* FirebaseController.swift */; };
 		609F4EC8236E87A80077D9AE /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609F4EC7236E87A80077D9AE /* ChartViewController.swift */; };
@@ -51,6 +53,8 @@
 		603141B8236F03C3001BCA76 /* officerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = officerData.swift; sourceTree = "<group>"; };
 		603141BA236F0513001BCA76 /* MulticastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
 		607CC7A6237417E9000B9940 /* ProgressVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressVIew.swift; sourceTree = "<group>"; };
+		607CC7A823744850000B9940 /* tableCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tableCollectionViewCell.swift; sourceTree = "<group>"; };
+		607CC7AA23744877000B9940 /* tableCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tableCollectionViewController.swift; sourceTree = "<group>"; };
 		609F4EC3236E86610077D9AE /* DatabaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseProtocol.swift; sourceTree = "<group>"; };
 		609F4EC5236E87540077D9AE /* FirebaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseController.swift; sourceTree = "<group>"; };
 		609F4EC7236E87A80077D9AE /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
@@ -154,6 +158,8 @@
 				603141B8236F03C3001BCA76 /* officerData.swift */,
 				603141BA236F0513001BCA76 /* MulticastDelegate.swift */,
 				607CC7A6237417E9000B9940 /* ProgressVIew.swift */,
+				607CC7A823744850000B9940 /* tableCollectionViewCell.swift */,
+				607CC7AA23744877000B9940 /* tableCollectionViewController.swift */,
 			);
 			path = Airpod;
 			sourceTree = "<group>";
@@ -416,6 +422,8 @@
 				609F4EC4236E86610077D9AE /* DatabaseProtocol.swift in Sources */,
 				603141B9236F03C3001BCA76 /* officerData.swift in Sources */,
 				603141BB236F0513001BCA76 /* MulticastDelegate.swift in Sources */,
+				607CC7A923744850000B9940 /* tableCollectionViewCell.swift in Sources */,
+				607CC7AB23744877000B9940 /* tableCollectionViewController.swift in Sources */,
 				60B4C2F6235537C60073D9CE /* ViewController.swift in Sources */,
 				60B4C2F2235537C60073D9CE /* AppDelegate.swift in Sources */,
 				60B4C2F4235537C60073D9CE /* SceneDelegate.swift in Sources */,
