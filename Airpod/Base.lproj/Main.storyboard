@@ -8,17 +8,21 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Chart View Controller-->
         <scene sceneID="4V2-j1-4ob">
             <objects>
-                <viewController id="owp-KD-CpL" sceneMemberID="viewController">
+                <viewController id="owp-KD-CpL" customClass="ChartViewController" customModule="Airpod" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IRJ-i2-xMk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cBZ-A5-olh" customClass="LineChartView" customModule="Charts">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cBZ-A5-olh" customClass="LineChartView" customModule="Charts">
                                 <rect key="frame" x="0.0" y="118" width="414" height="488"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="414" id="F9J-4H-bFR"/>
+                                    <constraint firstAttribute="height" constant="488" id="d0l-md-9ZA"/>
+                                </constraints>
                             </view>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Sc5-bZ-Bgg">
                                 <rect key="frame" x="20" y="627" width="374" height="32"/>
@@ -28,6 +32,9 @@
                                     <segment title="Week"/>
                                     <segment title="Month"/>
                                 </segments>
+                                <connections>
+                                    <action selector="switchButton:" destination="owp-KD-CpL" eventType="valueChanged" id="u22-0z-BUD"/>
+                                </connections>
                             </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -39,6 +46,9 @@
                         <viewLayoutGuide key="safeArea" id="wgq-xu-9sX"/>
                     </view>
                     <tabBarItem key="tabBarItem" selectedImage="doc" catalog="system" systemItem="downloads" id="x6K-5l-jJg"/>
+                    <connections>
+                        <outlet property="lineChartVIew" destination="cBZ-A5-olh" id="c0e-jd-CYx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rPL-tn-lBz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -47,7 +57,6 @@
         <!--View Controller-->
         <scene sceneID="4nL-rM-5Be">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lHH-5y-rqm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="OKi-fJ-Kff" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rQh-5w-WXT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -121,24 +130,44 @@
                     <tabBarItem key="tabBarItem" systemItem="mostViewed" id="Zvc-ml-Db6"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lHH-5y-rqm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-430.43478260869568" y="827.67857142857144"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="XSo-sm-i4O">
             <objects>
-                <viewController id="vvQ-4V-jL7" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ghQ-iZ-GFE">
+                <viewController id="vvQ-4V-jL7" customClass="ViewController" customModule="Airpod" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ghQ-iZ-GFE" customClass="HXScaleView" customModule="Airpod" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kvC-j5-R9W" customClass="ProgressView" customModule="Airpod" customModuleProvider="target">
+                                <rect key="frame" x="20" y="154" width="374" height="380"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="374" id="2HU-hg-BP8"/>
+                                    <constraint firstAttribute="height" constant="380" id="6ea-zC-nYb"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="kvC-j5-R9W" firstAttribute="top" secondItem="i36-ag-Yam" secondAttribute="top" constant="110" id="4QO-vM-gL0"/>
+                            <constraint firstItem="i36-ag-Yam" firstAttribute="trailing" secondItem="kvC-j5-R9W" secondAttribute="trailing" constant="20" id="VJC-Ck-hq1"/>
+                            <constraint firstItem="kvC-j5-R9W" firstAttribute="leading" secondItem="i36-ag-Yam" secondAttribute="leading" constant="20" id="WgK-t6-jKK"/>
+                            <constraint firstItem="i36-ag-Yam" firstAttribute="bottom" secondItem="kvC-j5-R9W" secondAttribute="bottom" constant="279" id="iBW-Q2-DRq"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="i36-ag-Yam"/>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="topRated" id="hEc-dX-NYM"/>
+                    <connections>
+                        <outlet property="ProgressBarView" destination="kvC-j5-R9W" id="ueE-WB-BMH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hxZ-J4-J6y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="603" y="-279"/>
+            <point key="canvasLocation" x="602.89855072463774" y="-279.24107142857139"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Th9-yW-c7j">

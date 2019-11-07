@@ -11,9 +11,11 @@ import UIKit
 class officerData: NSObject {
     var temperature: Double?
     var AQI: Double?
+    var timestamp: Int?
     
-    init (newTemperature: Double, newAQI: Double){
+    init (newTemperature: Double, newAQI: Double, newTime: Int){
         self.temperature = newTemperature
         self.AQI = newAQI
+        self.timestamp = newTime
     }
 }

@@ -11,10 +11,15 @@ import Charts
 
 class ChartViewController: UIViewController, DatabaseListener {
     
-    
+    //MARK: - Receive data
     var officerList: [officerData] = []
     weak var firebaseController: DatabaseProtocol?
 
+    //MARK:  - Elements on the screen
+    @IBOutlet weak var lineChartVIew: LineChartView!
+    @IBAction func switchButton(_ sender: UISegmentedControl) {
+    }
+    
     // MARK: - Preparation of Chart view
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,17 +48,18 @@ class ChartViewController: UIViewController, DatabaseListener {
         
         for data in officerList{
             let xvalue1 = lineChartEntry.count + 1
+            let value = ChartDataEntry(x: Double(xvalue1), y: data.AQI!)
+            lineChartEntry.append(value)
         }
-    }
-    
-    /*
-    // MARK: - Navigation
+        
+        let line = LineChartDataSet(entries: lineChartEntry, label: "Air Quality")
+        line.colors = [NSUIColor.blue]
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        let status = LineChartData()
+        status.addDataSet(line)
+        
+        lineChartVIew.data = status
+        lineChartVIew.chartDescription?.text = "AQI"
     }
-    */
 
 }
