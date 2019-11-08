@@ -10,13 +10,12 @@
 		382DC3DD6D0989EF98C53DD1 /* Pods_AirpodTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F94656C39C6F86902931E49E /* Pods_AirpodTests.framework */; };
 		603141B9236F03C3001BCA76 /* officerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603141B8236F03C3001BCA76 /* officerData.swift */; };
 		603141BB236F0513001BCA76 /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603141BA236F0513001BCA76 /* MulticastDelegate.swift */; };
-		607CC7A7237417E9000B9940 /* ProgressVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607CC7A6237417E9000B9940 /* ProgressVIew.swift */; };
-		607CC7A923744850000B9940 /* tableCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607CC7A823744850000B9940 /* tableCollectionViewCell.swift */; };
-		607CC7AB23744877000B9940 /* tableCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607CC7AA23744877000B9940 /* tableCollectionViewController.swift */; };
+		607CC7B323750EF8000B9940 /* sensorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607CC7B223750EF8000B9940 /* sensorCollectionViewCell.swift */; };
+		607CC7B523750F05000B9940 /* sensorCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607CC7B423750F05000B9940 /* sensorCollectionViewController.swift */; };
+		607CC7B723751869000B9940 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 607CC7B623751868000B9940 /* GoogleService-Info.plist */; };
 		609F4EC4236E86610077D9AE /* DatabaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609F4EC3236E86610077D9AE /* DatabaseProtocol.swift */; };
 		609F4EC6236E87540077D9AE /* FirebaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609F4EC5236E87540077D9AE /* FirebaseController.swift */; };
 		609F4EC8236E87A80077D9AE /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609F4EC7236E87A80077D9AE /* ChartViewController.swift */; };
-		609F4ECC236EA9F30077D9AE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 609F4ECB236EA9F30077D9AE /* GoogleService-Info.plist */; };
 		60B4C2F2235537C60073D9CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B4C2F1235537C60073D9CE /* AppDelegate.swift */; };
 		60B4C2F4235537C60073D9CE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B4C2F3235537C60073D9CE /* SceneDelegate.swift */; };
 		60B4C2F6235537C60073D9CE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B4C2F5235537C60073D9CE /* ViewController.swift */; };
@@ -52,13 +51,12 @@
 		38C17C2407774C8E76108904 /* Pods-AirpodUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirpodUITests.release.xcconfig"; path = "Target Support Files/Pods-AirpodUITests/Pods-AirpodUITests.release.xcconfig"; sourceTree = "<group>"; };
 		603141B8236F03C3001BCA76 /* officerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = officerData.swift; sourceTree = "<group>"; };
 		603141BA236F0513001BCA76 /* MulticastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
-		607CC7A6237417E9000B9940 /* ProgressVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressVIew.swift; sourceTree = "<group>"; };
-		607CC7A823744850000B9940 /* tableCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tableCollectionViewCell.swift; sourceTree = "<group>"; };
-		607CC7AA23744877000B9940 /* tableCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tableCollectionViewController.swift; sourceTree = "<group>"; };
+		607CC7B223750EF8000B9940 /* sensorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sensorCollectionViewCell.swift; sourceTree = "<group>"; };
+		607CC7B423750F05000B9940 /* sensorCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sensorCollectionViewController.swift; sourceTree = "<group>"; };
+		607CC7B623751868000B9940 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		609F4EC3236E86610077D9AE /* DatabaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseProtocol.swift; sourceTree = "<group>"; };
 		609F4EC5236E87540077D9AE /* FirebaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseController.swift; sourceTree = "<group>"; };
 		609F4EC7236E87A80077D9AE /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
-		609F4ECB236EA9F30077D9AE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		60B4C2EE235537C60073D9CE /* Airpod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Airpod.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60B4C2F1235537C60073D9CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		60B4C2F3235537C60073D9CE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -149,17 +147,16 @@
 				60B4C2F5235537C60073D9CE /* ViewController.swift */,
 				60B4C2F7235537C60073D9CE /* Main.storyboard */,
 				60B4C2FA235537C70073D9CE /* Assets.xcassets */,
+				607CC7B623751868000B9940 /* GoogleService-Info.plist */,
 				60B4C2FC235537C70073D9CE /* LaunchScreen.storyboard */,
 				60B4C2FF235537C70073D9CE /* Info.plist */,
 				609F4EC3236E86610077D9AE /* DatabaseProtocol.swift */,
-				609F4ECB236EA9F30077D9AE /* GoogleService-Info.plist */,
 				609F4EC5236E87540077D9AE /* FirebaseController.swift */,
 				609F4EC7236E87A80077D9AE /* ChartViewController.swift */,
 				603141B8236F03C3001BCA76 /* officerData.swift */,
 				603141BA236F0513001BCA76 /* MulticastDelegate.swift */,
-				607CC7A6237417E9000B9940 /* ProgressVIew.swift */,
-				607CC7A823744850000B9940 /* tableCollectionViewCell.swift */,
-				607CC7AA23744877000B9940 /* tableCollectionViewController.swift */,
+				607CC7B223750EF8000B9940 /* sensorCollectionViewCell.swift */,
+				607CC7B423750F05000B9940 /* sensorCollectionViewController.swift */,
 			);
 			path = Airpod;
 			sourceTree = "<group>";
@@ -304,7 +301,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				60B4C2FE235537C70073D9CE /* LaunchScreen.storyboard in Resources */,
-				609F4ECC236EA9F30077D9AE /* GoogleService-Info.plist in Resources */,
+				607CC7B723751869000B9940 /* GoogleService-Info.plist in Resources */,
 				60B4C2FB235537C70073D9CE /* Assets.xcassets in Resources */,
 				60B4C2F9235537C60073D9CE /* Main.storyboard in Resources */,
 			);
@@ -417,17 +414,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607CC7A7237417E9000B9940 /* ProgressVIew.swift in Sources */,
 				609F4EC6236E87540077D9AE /* FirebaseController.swift in Sources */,
 				609F4EC4236E86610077D9AE /* DatabaseProtocol.swift in Sources */,
+				607CC7B523750F05000B9940 /* sensorCollectionViewController.swift in Sources */,
 				603141B9236F03C3001BCA76 /* officerData.swift in Sources */,
 				603141BB236F0513001BCA76 /* MulticastDelegate.swift in Sources */,
-				607CC7A923744850000B9940 /* tableCollectionViewCell.swift in Sources */,
-				607CC7AB23744877000B9940 /* tableCollectionViewController.swift in Sources */,
 				60B4C2F6235537C60073D9CE /* ViewController.swift in Sources */,
 				60B4C2F2235537C60073D9CE /* AppDelegate.swift in Sources */,
 				60B4C2F4235537C60073D9CE /* SceneDelegate.swift in Sources */,
 				609F4EC8236E87A80077D9AE /* ChartViewController.swift in Sources */,
+				607CC7B323750EF8000B9940 /* sensorCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

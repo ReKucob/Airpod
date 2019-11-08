@@ -36,7 +36,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
     
     //MARK:  - SETUP A LISTENER FOR DATABASE TO MONITOR OFFICER DATA
     func setUpListeners(){
-        officerRef = database.collection("officer")
+        officerRef = database.collection("office1")
         officerRef?.addSnapshotListener{(querySnapshot,error) in
             guard (querySnapshot?.documents) != nil
                        else
@@ -57,22 +57,23 @@ class FirebaseController: NSObject, DatabaseProtocol {
             let documentRef = change.document.documentID
             if (documentRef != "Default")
             {
-                let AQIData = change.document.data()["AQI"] as! Double
-                let temperatureData = change.document.data()["temperature"] as! Double
-                let timestampData = change.document.data()["timestamp"] as! Int
+                let AQIData = change.document.data()["aqi"] as! Int
+                let temperatureData = change.document.data()["temp"] as! Int
+                let timestampData = change.document.data()["timestamp"] as! Double
+                let colourTempData = change.document.data()["colour_temp"] as! Int
                 print(documentRef)
                 
                 
                 if change.type == .added{
                     print("New sensor data: \(change.document.data())")
-                    let newSensorData = officerData(newTemperature: temperatureData, newAQI: AQIData, newTime: timestampData)
+                    let newSensorData = officerData(newTemperature: temperatureData, newAQI: AQIData, newTime: timestampData, newColourTemp: colourTempData)
                     
                     AQISensorDataList.append(newSensorData)
                 }
                 
                 if change.type == .modified{
                     print("New sensor Data: \(change.document.data())")
-                        let newSensorData = officerData(newTemperature: temperatureData, newAQI: AQIData, newTime: timestampData)
+                        let newSensorData = officerData(newTemperature: temperatureData, newAQI: AQIData, newTime: timestampData, newColourTemp: colourTempData)
 
                     AQISensorDataList.append(newSensorData)
 
@@ -80,8 +81,8 @@ class FirebaseController: NSObject, DatabaseProtocol {
             }
         }
         listeners.invoke{(listener) in
-        if listener.listenerType == ListenerType.all || listener.listenerType == ListenerType.officer{
-            listener.onOfficerChange(change: .update, OfficerDatas: AQISensorDataList)
+        if listener.listenerType == ListenerType.all || listener.listenerType == ListenerType.officer1{
+            listener.onOfficer1Change(change: .update, OfficerDatas: AQISensorDataList)
             }
     }
     }
@@ -91,8 +92,8 @@ class FirebaseController: NSObject, DatabaseProtocol {
     func addListener(listener: DatabaseListener) {
         listeners.addDelegate(listener)
         
-        if listener.listenerType == ListenerType.all || listener.listenerType == ListenerType.officer{
-        listener.onOfficerChange(change: .update, OfficerDatas: AQISensorDataList)
+        if listener.listenerType == ListenerType.all || listener.listenerType == ListenerType.officer1{
+        listener.onOfficer1Change(change: .update, OfficerDatas: AQISensorDataList)
         }
      
     }

@@ -16,12 +16,16 @@ enum DatabaseChange{
 
 enum ListenerType{
     case all
-    case officer
+    case officer1
+    case officer2
+    case warehouse1
 }
 
 protocol DatabaseListener: AnyObject {
     var listenerType: ListenerType {get set}
-    func onOfficerChange(change: DatabaseChange, OfficerDatas: [officerData])
+    func onOfficer1Change(change: DatabaseChange, OfficerDatas: [officerData])
+    func onOfficer2Change(change: DatabaseChange, OfficerDatas: [officerData])
+    func onwarehouse1Change(change: DatabaseChange, OfficerDatas: [officerData])
 }
 
 protocol DatabaseProtocol: AnyObject {

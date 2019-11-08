@@ -55,9 +55,9 @@ class ChartViewController: UIViewController, DatabaseListener {
     }
 
     // MARK: - Chart content for AQI
-    var listenerType = ListenerType.officer
+    var listenerType = ListenerType.officer1
     
-    func onOfficerChange(change: DatabaseChange, OfficerDatas: [officerData]) {
+    func onOfficer1Change(change: DatabaseChange, OfficerDatas: [officerData]) {
         officerList = OfficerDatas
         var lineChartEntry = [ChartDataEntry]()
         
@@ -65,7 +65,7 @@ class ChartViewController: UIViewController, DatabaseListener {
         {
         for data in officerList{
             let xvalue1 = lineChartEntry.count + 1
-            let value = ChartDataEntry(x: Double(xvalue1), y: data.AQI!)
+            let value = ChartDataEntry(x: Double(xvalue1), y: Double(data.AQI!))
             lineChartEntry.append(value)
         }
         
@@ -82,7 +82,7 @@ class ChartViewController: UIViewController, DatabaseListener {
         {
             for data in officerList{
                 let xvalue1 = lineChartEntry.count + 1
-                let value = ChartDataEntry(x: Double(xvalue1), y: data.AQI!)
+                let value = ChartDataEntry(x: Double(xvalue1), y: Double(data.AQI!))
                 lineChartEntry.append(value)
             }
             
@@ -99,7 +99,7 @@ class ChartViewController: UIViewController, DatabaseListener {
         {
             for data in officerList{
                 let xvalue1 = lineChartEntry.count + 1
-                let value = ChartDataEntry(x: Double(xvalue1), y: data.AQI!)
+                let value = ChartDataEntry(x: Double(xvalue1), y: Double(data.AQI!))
                 lineChartEntry.append(value)
             }
             
@@ -112,6 +112,12 @@ class ChartViewController: UIViewController, DatabaseListener {
             lineChartVIew.data = status
             lineChartVIew.chartDescription?.text = "AQI"
         }
+    }
+    
+    func onOfficer2Change(change: DatabaseChange, OfficerDatas: [officerData]) {
+    }
+    
+    func onwarehouse1Change(change: DatabaseChange, OfficerDatas: [officerData]) {
     }
 
 }

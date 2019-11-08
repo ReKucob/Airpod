@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>118297253838-lrhc5vcjknqrf1pe0apljfif9rjbgvm5.apps.googleusercontent.com</string>
+	<string>13278440730-44lk18p2f42kc5qngnvm1c0kp9o2l6di.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.118297253838-lrhc5vcjknqrf1pe0apljfif9rjbgvm5</string>
+	<string>com.googleusercontent.apps.13278440730-44lk18p2f42kc5qngnvm1c0kp9o2l6di</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCl4g6rtVT-1siVzJ3au-3NxkIyhqkdrlA</string>
+	<string>AIzaSyCz45kDcIx854fF2C1OPRK3fkvc2yzSdkE</string>
 	<key>GCM_SENDER_ID</key>
-	<string>118297253838</string>
+	<string>13278440730</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>group6.Airpod</string>
 	<key>PROJECT_ID</key>
-	<string>assignment3-87b10</string>
+	<string>airpod-947bd</string>
 	<key>STORAGE_BUCKET</key>
-	<string>assignment3-87b10.appspot.com</string>
+	<string>airpod-947bd.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:118297253838:ios:68bb8f5a1e6f1df3397d9f</string>
+	<string>1:13278440730:ios:694f89f548012038fc50a3</string>
 	<key>DATABASE_URL</key>
-	<string>https://assignment3-87b10.firebaseio.com</string>
+	<string>https://airpod-947bd.firebaseio.com</string>
 </dict>
 </plist>

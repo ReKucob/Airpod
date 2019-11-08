@@ -1,8 +1,8 @@
 //
-//  tableCollectionViewController.swift
+//  sensorCollectionViewController.swift
 //  Airpod
 //
-//  Created by Burns on 7/11/19.
+//  Created by Burns on 8/11/19.
 //  Copyright © 2019 Group 6. All rights reserved.
 //
 
@@ -10,10 +10,7 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
-class tableCollectionViewController: UICollectionViewController {
-    
-    let resureIdentifier = "cell"
-    var items = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15"]
+class sensorCollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,23 +44,15 @@ class tableCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return self.items.count
+        return 0
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! tableCollectionViewCell
-        
-        cell.testLabel.text = self.items[indexPath.item]
-        cell.backgroundColor = UIColor.blue
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
     
         // Configure the cell
     
         return cell
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // handle tap events
-        print("You selected cell #\(indexPath.item)!")
     }
 
     // MARK: UICollectionViewDelegate
