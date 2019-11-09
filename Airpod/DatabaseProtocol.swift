@@ -25,7 +25,7 @@ protocol DatabaseListener: AnyObject {
     var listenerType: ListenerType {get set}
     func onOfficer1Change(change: DatabaseChange, OfficerDatas: [officerData])
     func onOfficer2Change(change: DatabaseChange, OfficerDatas: [officerData])
-    func onwarehouse1Change(change: DatabaseChange, OfficerDatas: [officerData])
+    func onWarehouse1Change(change: DatabaseChange, OfficerDatas: [officerData])
 }
 
 protocol DatabaseProtocol: AnyObject {

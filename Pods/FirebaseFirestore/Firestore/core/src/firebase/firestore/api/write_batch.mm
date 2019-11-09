@@ -20,12 +20,10 @@
 
 #include "Firestore/core/src/firebase/firestore/api/document_reference.h"
 #include "Firestore/core/src/firebase/firestore/api/firestore.h"
-#include "Firestore/core/src/firebase/firestore/api/input_validation.h"
 #include "Firestore/core/src/firebase/firestore/core/firestore_client.h"
 #include "Firestore/core/src/firebase/firestore/core/user_data.h"
 #include "Firestore/core/src/firebase/firestore/model/delete_mutation.h"
-
-NS_ASSUME_NONNULL_BEGIN
+#include "Firestore/core/src/firebase/firestore/util/exception.h"
 
 namespace firebase {
 namespace firestore {
@@ -34,6 +32,8 @@ namespace api {
 using model::DeleteMutation;
 using model::Mutation;
 using model::Precondition;
+using util::ThrowIllegalState;
+using util::ThrowInvalidArgument;
 
 void WriteBatch::SetData(const DocumentReference& reference,
                          core::ParsedSetData&& setData) {
@@ -90,5 +90,3 @@ void WriteBatch::ValidateReference(const DocumentReference& reference) const {
 }  // namespace api
 }  // namespace firestore
 }  // namespace firebase
-
-NS_ASSUME_NONNULL_END

@@ -13,6 +13,7 @@ pod 'Firebase/Analytics'
 pod 'Firebase/Auth'
 pod 'Firebase/Firestore'
 pod 'Charts'
+pod 'Firebase/Database'
 
   # Pods for Airpod
 

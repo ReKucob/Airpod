@@ -10,14 +10,77 @@ import UIKit
 import Charts
 
 class ChartViewController: UIViewController, DatabaseListener {
+  
     
+    var listenerType = ListenerType.officer1
     var indexText = "days"
+    
+    let today = Double(NSDate().timeIntervalSince1970)
+    var thatDay: Double? = nil
     
     //MARK: - Receive data
     var officerList: [officerData] = []
     weak var firebaseController: DatabaseProtocol?
 
     //MARK:  - Elements on the screen
+    
+    @IBAction func handleSelector(_ sender: UIButton) {
+        locationButtons.forEach{ (button) in
+            UIView.animate(withDuration: 0.3, animations:{
+                button.isHidden = !button.isHidden
+                self.view.layoutIfNeeded()
+            } )
+            
+        }
+    }
+    @IBOutlet var locationButtons: [UIButton]!
+    
+    enum Locations: String {
+        case office1 = "office1"
+        case office2 = "office2"
+        case warehouse1 = "warehouse"
+    }
+    
+    @IBAction func LocationTapped(_ sender: UIButton) {
+        guard let title = sender.currentTitle,
+        let location = Locations(rawValue: title)
+        else {return}
+        
+        switch location {
+        case .office1:
+            locationButtons.forEach{ (button) in
+                       UIView.animate(withDuration: 0.3, animations:{
+                           button.isHidden = !button.isHidden
+                           self.view.layoutIfNeeded()
+                       } )
+                       
+                   }
+            print(Double(NSDate().timeIntervalSince1970))
+            listenerType = ListenerType.officer1
+        case .office2:
+            locationButtons.forEach{ (button) in
+                UIView.animate(withDuration: 0.3, animations:{
+                    button.isHidden = !button.isHidden
+                    self.view.layoutIfNeeded()
+                } )
+                
+            }
+            print(Calendar.autoupdatingCurrent.isDateInToday(Date(timeIntervalSince1970: 1573306652)))
+            listenerType = ListenerType.officer2
+        case .warehouse1:
+            locationButtons.forEach{ (button) in
+                UIView.animate(withDuration: 0.3, animations:{
+                    button.isHidden = !button.isHidden
+                    self.view.layoutIfNeeded()
+                } )
+                
+            }
+            print(Int(NSDate().timeIntervalSince1970) - (7*24*60*60))
+            print(Date(timeIntervalSince1970: TimeInterval(Int(NSDate().timeIntervalSince1970) - (30*24*60*60))))
+            listenerType = ListenerType.warehouse1
+        }
+    }
+    
     @IBOutlet weak var lineChartVIew: LineChartView!
     
     @IBOutlet weak var segmentC: UISegmentedControl!
@@ -27,7 +90,7 @@ class ChartViewController: UIViewController, DatabaseListener {
       
         switch(getIndex){
         case 1:
-            indexText = "Week"
+            indexText = "Days"
         case 2:
             indexText = "month"
         default:
@@ -54,70 +117,469 @@ class ChartViewController: UIViewController, DatabaseListener {
         firebaseController!.removeListener(listener: self)
     }
 
-    // MARK: - Chart content for AQI
-    var listenerType = ListenerType.officer1
-    
+    // MARK: - Chart contents for days chart for each location
     func onOfficer1Change(change: DatabaseChange, OfficerDatas: [officerData]) {
         officerList = OfficerDatas
         var lineChartEntry = [ChartDataEntry]()
+        var colourLine = [ChartDataEntry]()
+        var tempLine = [ChartDataEntry]()
         
+        // add chart content for days
         if (indexText == "days")
         {
+        thatDay = today - (24*60*60)
         for data in officerList{
+            if (Int(data.timestamp!) >= Int(thatDay!))
+            {
             let xvalue1 = lineChartEntry.count + 1
             let value = ChartDataEntry(x: Double(xvalue1), y: Double(data.AQI!))
             lineChartEntry.append(value)
+            
+            let xvalue2 = lineChartEntry.count + 1
+            let value2 = ChartDataEntry(x: Double(xvalue2), y: Double(data.colourTemperature!))
+            colourLine.append(value2)
+            
+            let xvalue3 = lineChartEntry.count + 1
+            let value3 = ChartDataEntry(x: Double(xvalue3), y: Double(data.temperature!))
+            tempLine.append(value3)
+            }
         }
         
         let line = LineChartDataSet(entries: lineChartEntry, label: "Air Quality")
         line.colors = [NSUIColor.blue]
 
+        let line2 = LineChartDataSet(entries: colourLine, label: "Colour temperature")
+        line2.colors = [NSUIColor.red]
+        
+        let line3 = LineChartDataSet(entries: tempLine, label: "Temperature")
+        line3.colors = [NSUIColor.green]
+        
         let status = LineChartData()
         status.addDataSet(line)
+        status.addDataSet(line2)
+        status.addDataSet(line3)
         
         lineChartVIew.data = status
-        lineChartVIew.chartDescription?.text = "AQI"
+        lineChartVIew.chartDescription?.text = "Location Sensor records"
         }
+            
+        // add chart content for weeks
         else if (indexText == "weeks")
         {
-            for data in officerList{
-                let xvalue1 = lineChartEntry.count + 1
-                let value = ChartDataEntry(x: Double(xvalue1), y: Double(data.AQI!))
-                lineChartEntry.append(value)
-            }
-            
+            let count = 7.0
+            var number: Int? = 0
+            var totalaqi: Int? = 0
+            var totalTemp: Int? = 0
+            var totalColourTemp: Int? = 0
+            while count >= 0.0 {
+                let rangeMax = today - ((count - 1)*24*60*60)
+                let rangeMin = today - (count*24*60*60)
+                for data in officerList
+                {
+                    if (Int(data.timestamp!) >= Int(rangeMin) && Int(data.timestamp!) <= Int(rangeMax))
+                    {
+                        number = number! + 1
+                        totalaqi = totalaqi! + data.AQI!
+                        totalTemp = totalTemp! + data.temperature!
+                        totalColourTemp = totalColourTemp! + data.colourTemperature!
+                        
+                        let xvalue1 = lineChartEntry.count + 1
+                        let value = ChartDataEntry(x: Double(xvalue1), y: Double(totalaqi! / number!))
+                        lineChartEntry.append(value)
+                        
+                        let xvalue2 = lineChartEntry.count + 1
+                        let value2 = ChartDataEntry(x: Double(xvalue2), y: Double(totalTemp! / number!))
+                        colourLine.append(value2)
+                        
+                        let xvalue3 = lineChartEntry.count + 1
+                        let value3 = ChartDataEntry(x: Double(xvalue3), y: Double(totalColourTemp! / number!))
+                        tempLine.append(value3)
+                        
+                    }
+                }
+        }
             let line = LineChartDataSet(entries: lineChartEntry, label: "Air Quality")
-            line.colors = [NSUIColor.green]
+            line.colors = [NSUIColor.blue]
 
+            let line2 = LineChartDataSet(entries: colourLine, label: "Colour temperature")
+            line2.colors = [NSUIColor.red]
+            
+            let line3 = LineChartDataSet(entries: tempLine, label: "Temperature")
+            line3.colors = [NSUIColor.green]
+            
             let status = LineChartData()
             status.addDataSet(line)
+            status.addDataSet(line2)
+            status.addDataSet(line3)
             
             lineChartVIew.data = status
             lineChartVIew.chartDescription?.text = "AQI"
         }
+            
+        // add chart contents for month
         else if (indexText == "month")
         {
-            for data in officerList{
-                let xvalue1 = lineChartEntry.count + 1
-                let value = ChartDataEntry(x: Double(xvalue1), y: Double(data.AQI!))
-                lineChartEntry.append(value)
+            let count = 30.0
+            var number: Int? = 0
+            var totalaqi: Int? = 0
+            var totalTemp: Int? = 0
+            var totalColourTemp: Int? = 0
+            while count >= 0.0 {
+                let rangeMax = today - ((count - 1)*24*60*60)
+                let rangeMin = today - (count*24*60*60)
+                for data in officerList
+                {
+                    if (Int(data.timestamp!) >= Int(rangeMin) && Int(data.timestamp!) <= Int(rangeMax))
+                    {
+                        number = number! + 1
+                        totalaqi = totalaqi! + data.AQI!
+                        totalTemp = totalTemp! + data.temperature!
+                        totalColourTemp = totalColourTemp! + data.colourTemperature!
+                        
+                        let xvalue1 = lineChartEntry.count + 1
+                        let value = ChartDataEntry(x: Double(xvalue1), y: Double(totalaqi! / number!))
+                        lineChartEntry.append(value)
+                        
+                        let xvalue2 = lineChartEntry.count + 1
+                        let value2 = ChartDataEntry(x: Double(xvalue2), y: Double(totalTemp! / number!))
+                        colourLine.append(value2)
+                        
+                        let xvalue3 = lineChartEntry.count + 1
+                        let value3 = ChartDataEntry(x: Double(xvalue3), y: Double(totalColourTemp! / number!))
+                        tempLine.append(value3)
+                        
+                    }
+                }
+                
             }
             
             let line = LineChartDataSet(entries: lineChartEntry, label: "Air Quality")
-            line.colors = [NSUIColor.red]
+            line.colors = [NSUIColor.blue]
 
+            let line2 = LineChartDataSet(entries: colourLine, label: "Colour temperature")
+            line2.colors = [NSUIColor.red]
+            
+            let line3 = LineChartDataSet(entries: tempLine, label: "Temperature")
+            line3.colors = [NSUIColor.green]
+            
             let status = LineChartData()
             status.addDataSet(line)
+            status.addDataSet(line2)
+            status.addDataSet(line3)
             
             lineChartVIew.data = status
             lineChartVIew.chartDescription?.text = "AQI"
         }
     }
     
+    // MARK: - chart contents for location 2
     func onOfficer2Change(change: DatabaseChange, OfficerDatas: [officerData]) {
+        officerList = OfficerDatas
+               var lineChartEntry = [ChartDataEntry]()
+               var colourLine = [ChartDataEntry]()
+               var tempLine = [ChartDataEntry]()
+               
+               // add chart content for days
+               if (indexText == "days")
+               {
+               thatDay = today - (24*60*60)
+               for data in officerList{
+                   if (Int(data.timestamp!) >= Int(thatDay!))
+                   {
+                   let xvalue1 = lineChartEntry.count + 1
+                   let value = ChartDataEntry(x: Double(xvalue1), y: Double(data.AQI!))
+                   lineChartEntry.append(value)
+                   
+                   let xvalue2 = lineChartEntry.count + 1
+                   let value2 = ChartDataEntry(x: Double(xvalue2), y: Double(data.colourTemperature!))
+                   colourLine.append(value2)
+                   
+                   let xvalue3 = lineChartEntry.count + 1
+                   let value3 = ChartDataEntry(x: Double(xvalue3), y: Double(data.temperature!))
+                   tempLine.append(value3)
+                   }
+               }
+               
+               let line = LineChartDataSet(entries: lineChartEntry, label: "Air Quality")
+               line.colors = [NSUIColor.blue]
+
+               let line2 = LineChartDataSet(entries: colourLine, label: "Colour temperature")
+               line2.colors = [NSUIColor.red]
+               
+               let line3 = LineChartDataSet(entries: tempLine, label: "Temperature")
+               line3.colors = [NSUIColor.green]
+               
+               let status = LineChartData()
+               status.addDataSet(line)
+               status.addDataSet(line2)
+               status.addDataSet(line3)
+               
+               lineChartVIew.data = status
+               lineChartVIew.chartDescription?.text = "Location Sensor records"
+               }
+                   
+               // add chart content for weeks
+               else if (indexText == "weeks")
+               {
+                   let count = 7.0
+                   var number: Int? = 0
+                   var totalaqi: Int? = 0
+                   var totalTemp: Int? = 0
+                   var totalColourTemp: Int? = 0
+                   while count >= 0.0 {
+                       let rangeMax = today - ((count - 1)*24*60*60)
+                       let rangeMin = today - (count*24*60*60)
+                       for data in officerList
+                       {
+                           if (Int(data.timestamp!) >= Int(rangeMin) && Int(data.timestamp!) <= Int(rangeMax))
+                           {
+                               number = number! + 1
+                               totalaqi = totalaqi! + data.AQI!
+                               totalTemp = totalTemp! + data.temperature!
+                               totalColourTemp = totalColourTemp! + data.colourTemperature!
+                               
+                               let xvalue1 = lineChartEntry.count + 1
+                               let value = ChartDataEntry(x: Double(xvalue1), y: Double(totalaqi! / number!))
+                               lineChartEntry.append(value)
+                               
+                               let xvalue2 = lineChartEntry.count + 1
+                               let value2 = ChartDataEntry(x: Double(xvalue2), y: Double(totalTemp! / number!))
+                               colourLine.append(value2)
+                               
+                               let xvalue3 = lineChartEntry.count + 1
+                               let value3 = ChartDataEntry(x: Double(xvalue3), y: Double(totalColourTemp! / number!))
+                               tempLine.append(value3)
+                               
+                           }
+                       }
+               }
+                   let line = LineChartDataSet(entries: lineChartEntry, label: "Air Quality")
+                   line.colors = [NSUIColor.blue]
+
+                   let line2 = LineChartDataSet(entries: colourLine, label: "Colour temperature")
+                   line2.colors = [NSUIColor.red]
+                   
+                   let line3 = LineChartDataSet(entries: tempLine, label: "Temperature")
+                   line3.colors = [NSUIColor.green]
+                   
+                   let status = LineChartData()
+                   status.addDataSet(line)
+                   status.addDataSet(line2)
+                   status.addDataSet(line3)
+                   
+                   lineChartVIew.data = status
+                   lineChartVIew.chartDescription?.text = "AQI"
+               }
+                   
+               // add chart contents for month
+               else if (indexText == "month")
+               {
+                   let count = 30.0
+                   var number: Int? = 0
+                   var totalaqi: Int? = 0
+                   var totalTemp: Int? = 0
+                   var totalColourTemp: Int? = 0
+                   while count >= 0.0 {
+                       let rangeMax = today - ((count - 1)*24*60*60)
+                       let rangeMin = today - (count*24*60*60)
+                       for data in officerList
+                       {
+                           if (Int(data.timestamp!) >= Int(rangeMin) && Int(data.timestamp!) <= Int(rangeMax))
+                           {
+                               number = number! + 1
+                               totalaqi = totalaqi! + data.AQI!
+                               totalTemp = totalTemp! + data.temperature!
+                               totalColourTemp = totalColourTemp! + data.colourTemperature!
+                               
+                               let xvalue1 = lineChartEntry.count + 1
+                               let value = ChartDataEntry(x: Double(xvalue1), y: Double(totalaqi! / number!))
+                               lineChartEntry.append(value)
+                               
+                               let xvalue2 = lineChartEntry.count + 1
+                               let value2 = ChartDataEntry(x: Double(xvalue2), y: Double(totalTemp! / number!))
+                               colourLine.append(value2)
+                               
+                               let xvalue3 = lineChartEntry.count + 1
+                               let value3 = ChartDataEntry(x: Double(xvalue3), y: Double(totalColourTemp! / number!))
+                               tempLine.append(value3)
+                               
+                           }
+                       }
+                       
+                   }
+                   
+                   let line = LineChartDataSet(entries: lineChartEntry, label: "Air Quality")
+                   line.colors = [NSUIColor.blue]
+
+                   let line2 = LineChartDataSet(entries: colourLine, label: "Colour temperature")
+                   line2.colors = [NSUIColor.red]
+                   
+                   let line3 = LineChartDataSet(entries: tempLine, label: "Temperature")
+                   line3.colors = [NSUIColor.green]
+                   
+                   let status = LineChartData()
+                   status.addDataSet(line)
+                   status.addDataSet(line2)
+                   status.addDataSet(line3)
+                   
+                   lineChartVIew.data = status
+                   lineChartVIew.chartDescription?.text = "AQI"
+               }
     }
     
-    func onwarehouse1Change(change: DatabaseChange, OfficerDatas: [officerData]) {
-    }
+    //MARK: - chart contents for the location 3
+   func onWarehouse1Change(change: DatabaseChange, OfficerDatas: [officerData]) {
+    officerList = OfficerDatas
+           var lineChartEntry = [ChartDataEntry]()
+           var colourLine = [ChartDataEntry]()
+           var tempLine = [ChartDataEntry]()
+           
+           // add chart content for days
+           if (indexText == "days")
+           {
+           thatDay = today - (24*60*60)
+           for data in officerList{
+               if (Int(data.timestamp!) >= Int(thatDay!))
+               {
+               let xvalue1 = lineChartEntry.count + 1
+               let value = ChartDataEntry(x: Double(xvalue1), y: Double(data.AQI!))
+               lineChartEntry.append(value)
+               
+               let xvalue2 = lineChartEntry.count + 1
+               let value2 = ChartDataEntry(x: Double(xvalue2), y: Double(data.colourTemperature!))
+               colourLine.append(value2)
+               
+               let xvalue3 = lineChartEntry.count + 1
+               let value3 = ChartDataEntry(x: Double(xvalue3), y: Double(data.temperature!))
+               tempLine.append(value3)
+               }
+           }
+           
+           let line = LineChartDataSet(entries: lineChartEntry, label: "Air Quality")
+           line.colors = [NSUIColor.blue]
 
+           let line2 = LineChartDataSet(entries: colourLine, label: "Colour temperature")
+           line2.colors = [NSUIColor.red]
+           
+           let line3 = LineChartDataSet(entries: tempLine, label: "Temperature")
+           line3.colors = [NSUIColor.green]
+           
+           let status = LineChartData()
+           status.addDataSet(line)
+           status.addDataSet(line2)
+           status.addDataSet(line3)
+           
+           lineChartVIew.data = status
+           lineChartVIew.chartDescription?.text = "Location Sensor records"
+           }
+               
+           // add chart content for weeks
+           else if (indexText == "weeks")
+           {
+               let count = 7.0
+               var number: Int? = 0
+               var totalaqi: Int? = 0
+               var totalTemp: Int? = 0
+               var totalColourTemp: Int? = 0
+               while count >= 0.0 {
+                   let rangeMax = today - ((count - 1)*24*60*60)
+                   let rangeMin = today - (count*24*60*60)
+                   for data in officerList
+                   {
+                       if (Int(data.timestamp!) >= Int(rangeMin) && Int(data.timestamp!) <= Int(rangeMax))
+                       {
+                           number = number! + 1
+                           totalaqi = totalaqi! + data.AQI!
+                           totalTemp = totalTemp! + data.temperature!
+                           totalColourTemp = totalColourTemp! + data.colourTemperature!
+                           
+                           let xvalue1 = lineChartEntry.count + 1
+                           let value = ChartDataEntry(x: Double(xvalue1), y: Double(totalaqi! / number!))
+                           lineChartEntry.append(value)
+                           
+                           let xvalue2 = lineChartEntry.count + 1
+                           let value2 = ChartDataEntry(x: Double(xvalue2), y: Double(totalTemp! / number!))
+                           colourLine.append(value2)
+                           
+                           let xvalue3 = lineChartEntry.count + 1
+                           let value3 = ChartDataEntry(x: Double(xvalue3), y: Double(totalColourTemp! / number!))
+                           tempLine.append(value3)
+                           
+                       }
+                   }
+           }
+               let line = LineChartDataSet(entries: lineChartEntry, label: "Air Quality")
+               line.colors = [NSUIColor.blue]
+
+               let line2 = LineChartDataSet(entries: colourLine, label: "Colour temperature")
+               line2.colors = [NSUIColor.red]
+               
+               let line3 = LineChartDataSet(entries: tempLine, label: "Temperature")
+               line3.colors = [NSUIColor.green]
+               
+               let status = LineChartData()
+               status.addDataSet(line)
+               status.addDataSet(line2)
+               status.addDataSet(line3)
+               
+               lineChartVIew.data = status
+               lineChartVIew.chartDescription?.text = "AQI"
+           }
+               
+           // add chart contents for month
+           else if (indexText == "month")
+           {
+               let count = 30.0
+               var number: Int? = 0
+               var totalaqi: Int? = 0
+               var totalTemp: Int? = 0
+               var totalColourTemp: Int? = 0
+               while count >= 0.0 {
+                   let rangeMax = today - ((count - 1)*24*60*60)
+                   let rangeMin = today - (count*24*60*60)
+                   for data in officerList
+                   {
+                       if (Int(data.timestamp!) >= Int(rangeMin) && Int(data.timestamp!) <= Int(rangeMax))
+                       {
+                           number = number! + 1
+                           totalaqi = totalaqi! + data.AQI!
+                           totalTemp = totalTemp! + data.temperature!
+                           totalColourTemp = totalColourTemp! + data.colourTemperature!
+                           
+                           let xvalue1 = lineChartEntry.count + 1
+                           let value = ChartDataEntry(x: Double(xvalue1), y: Double(totalaqi! / number!))
+                           lineChartEntry.append(value)
+                           
+                           let xvalue2 = lineChartEntry.count + 1
+                           let value2 = ChartDataEntry(x: Double(xvalue2), y: Double(totalTemp! / number!))
+                           colourLine.append(value2)
+                           
+                           let xvalue3 = lineChartEntry.count + 1
+                           let value3 = ChartDataEntry(x: Double(xvalue3), y: Double(totalColourTemp! / number!))
+                           tempLine.append(value3)
+                           
+                       }
+                   }
+                   
+               }
+               
+               let line = LineChartDataSet(entries: lineChartEntry, label: "Air Quality")
+               line.colors = [NSUIColor.blue]
+
+               let line2 = LineChartDataSet(entries: colourLine, label: "Colour temperature")
+               line2.colors = [NSUIColor.red]
+               
+               let line3 = LineChartDataSet(entries: tempLine, label: "Temperature")
+               line3.colors = [NSUIColor.green]
+               
+               let status = LineChartData()
+               status.addDataSet(line)
+               status.addDataSet(line2)
+               status.addDataSet(line3)
+               
+               lineChartVIew.data = status
+               lineChartVIew.chartDescription?.text = "AQI"
+           }
+          
+    }
 }
