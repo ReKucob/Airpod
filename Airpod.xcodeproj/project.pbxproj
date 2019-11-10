@@ -23,6 +23,7 @@
 		60B4C2FE235537C70073D9CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60B4C2FC235537C70073D9CE /* LaunchScreen.storyboard */; };
 		60B4C309235537C70073D9CE /* AirpodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B4C308235537C70073D9CE /* AirpodTests.swift */; };
 		60B4C314235537C80073D9CE /* AirpodUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B4C313235537C80073D9CE /* AirpodUITests.swift */; };
+		60E32B3923779BFA000926F6 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E32B3823779BFA000926F6 /* SettingViewController.swift */; };
 		C346A11698ECDBB8A98E3419 /* Pods_Airpod.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC26D8608918308F195EEF71 /* Pods_Airpod.framework */; };
 		EEE9D94C0863BB7A79477459 /* Pods_AirpodUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83645C0C5C35D440EBF6F483 /* Pods_AirpodUITests.framework */; };
 /* End PBXBuildFile section */
@@ -69,6 +70,7 @@
 		60B4C30F235537C80073D9CE /* AirpodUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AirpodUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		60B4C313235537C80073D9CE /* AirpodUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirpodUITests.swift; sourceTree = "<group>"; };
 		60B4C315235537C80073D9CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		60E32B3823779BFA000926F6 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		83645C0C5C35D440EBF6F483 /* Pods_AirpodUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AirpodUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C467F5202296992FC5018474 /* Pods-Airpod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Airpod.release.xcconfig"; path = "Target Support Files/Pods-Airpod/Pods-Airpod.release.xcconfig"; sourceTree = "<group>"; };
 		C8657F6ADA5A369CD7D85C74 /* Pods-AirpodUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirpodUITests.debug.xcconfig"; path = "Target Support Files/Pods-AirpodUITests/Pods-AirpodUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				603141B8236F03C3001BCA76 /* officerData.swift */,
 				603141BA236F0513001BCA76 /* MulticastDelegate.swift */,
 				606136CE23766E2000FA5C4A /* sensorsViewController.swift */,
+				60E32B3823779BFA000926F6 /* SettingViewController.swift */,
 			);
 			path = Airpod;
 			sourceTree = "<group>";
@@ -416,6 +419,7 @@
 				609F4EC4236E86610077D9AE /* DatabaseProtocol.swift in Sources */,
 				603141B9236F03C3001BCA76 /* officerData.swift in Sources */,
 				603141BB236F0513001BCA76 /* MulticastDelegate.swift in Sources */,
+				60E32B3923779BFA000926F6 /* SettingViewController.swift in Sources */,
 				60B4C2F6235537C60073D9CE /* ViewController.swift in Sources */,
 				60B4C2F2235537C60073D9CE /* AppDelegate.swift in Sources */,
 				60B4C2F4235537C60073D9CE /* SceneDelegate.swift in Sources */,

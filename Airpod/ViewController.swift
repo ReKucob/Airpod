@@ -82,13 +82,6 @@ class ViewController: UIViewController, DatabaseListener {
     @IBOutlet weak var tempLabel: UILabel!
     @IBOutlet weak var aqiLabel: UILabel!
     
-    @IBAction func colourBtn(_ sender: Any) {
-    }
-    @IBAction func tempBtn(_ sender: Any) {
-    }
-    @IBAction func aqiBtn(_ sender: Any) {
-    }
-    
     
     @IBOutlet weak var ProgressBarView: UIView!
     
