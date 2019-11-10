@@ -33,7 +33,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 print (error)
             }
         }
-        
         center.delegate = self
         
         // Override point for customization after application launch.

@@ -16,7 +16,9 @@ class ViewController: UIViewController, DatabaseListener {
      weak var firebaseController: DatabaseProtocol?
      var listenerType = ListenerType.officer1
      var realtimeDB = Database.database().reference()
+     private var dividedNum: Float? = 100
    
+    // MARK: - Drop down list
     @IBAction func handleSelector(_ sender: UIButton) {
         locationButtons.forEach{ (button) in
             UIView.animate(withDuration: 0.3, animations:{
@@ -26,6 +28,8 @@ class ViewController: UIViewController, DatabaseListener {
             
         }
     }
+    
+    // set up locations
     @IBOutlet var locationButtons: [UIButton]!
     
     enum Locations: String {
@@ -34,6 +38,7 @@ class ViewController: UIViewController, DatabaseListener {
         case warehouse1 = "Warehouse"
     }
     
+    //set up the location action when tapped
     @IBAction func LocationTapped(_ sender: UIButton) {
         guard let title = sender.currentTitle,
         let location = Locations(rawValue: title)
@@ -45,15 +50,12 @@ class ViewController: UIViewController, DatabaseListener {
                        UIView.animate(withDuration: 0.3, animations:{
                            button.isHidden = !button.isHidden
                            self.view.layoutIfNeeded()
-                       } )
+                    } )
                        
                    }
             print("Location1")
             listenerType = ListenerType.officer1
-            realtimeDB.child("office1").child("aqi").observe(.value, with: {(snapshot) in
-            self.aqiLabel.text = "\(snapshot.value as? Int)"
-                
-            })
+
         case .office2:
             locationButtons.forEach{ (button) in
                 UIView.animate(withDuration: 0.3, animations:{
@@ -81,8 +83,6 @@ class ViewController: UIViewController, DatabaseListener {
     @IBOutlet weak var colourLabel: UILabel!
     @IBOutlet weak var tempLabel: UILabel!
     @IBOutlet weak var aqiLabel: UILabel!
-    
-    
     @IBOutlet weak var ProgressBarView: UIView!
     
     override func viewDidLoad() {
@@ -91,33 +91,7 @@ class ViewController: UIViewController, DatabaseListener {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         firebaseController = appDelegate.firebaseController
         
-        let center = UNUserNotificationCenter.current()
-        let content = UNMutableNotificationContent()
-        
-        content.title = "High AQI Warning"
-        content.subtitle = "AQI has some stranges"
-        content.body = "YOur AQI in officer is high, please check that"
-        content.sound = UNNotificationSound.default
-        content.threadIdentifier = "local-notifications temp"
-        
-        let date = Date(timeIntervalSinceNow: 10)
-        
-        let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
-        
-        let request = UNNotificationRequest(identifier: "content", content: content, trigger: trigger)
-        
-        center.add(request) {(error) in
-            if error != nil{
-                print(error as Any)
-            }
-        }
-        realtimeDB.child("office1").child("aqi").observeSingleEvent(of: .value, with: {(snapshot) in
-        self.aqiLabel.text = "\(snapshot.value as! Int)"
-            print(snapshot.value as! Int)
-        })
-        
-        
+        changeView()
 }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -141,6 +115,7 @@ class ViewController: UIViewController, DatabaseListener {
         let textLayer = CATextLayer()
         let coverlayer = CATextLayer()
         
+        
         if(!officerList.isEmpty)
         {
             //cover the previous layer
@@ -153,32 +128,38 @@ class ViewController: UIViewController, DatabaseListener {
             
          // the biggest circle to represent the number of colourtemperature
         let circularPath = UIBezierPath(arcCenter: ProgressBarView.center, radius: 150, startAngle: -CGFloat.pi/2, endAngle: -CGFloat.pi/2 + 2 * CGFloat.pi, clockwise: true)
+        realtimeDB.child("office1").child("aqi").observeSingleEvent(of: .value, with: {(snapshot) in
+        self.dividedNum = snapshot.value as? Float})
         backgroundLayer.path = circularPath.cgPath
         backgroundLayer.strokeColor = UIColor.red.cgColor
         backgroundLayer.lineWidth = 20
         backgroundLayer.fillColor = UIColor.clear.cgColor
         backgroundLayer.lineCap = .round
-            backgroundLayer.strokeEnd = CGFloat(Float(officerList.last!.colourTemperature!) / Float(10000))
+        backgroundLayer.strokeEnd = CGFloat(Float(officerList.last!.colourTemperature!) / dividedNum!)
         ProgressBarView.layer.addSublayer(backgroundLayer)
         
             //the mid circle to represent th number of temperature
         let circularPath2 = UIBezierPath(arcCenter: ProgressBarView.center, radius: 130, startAngle: -CGFloat.pi/2, endAngle: -CGFloat.pi/2 + 2 * CGFloat.pi, clockwise: true)
+            realtimeDB.child("office1").child("temp").observeSingleEvent(of: .value, with: {(snapshot) in
+                self.dividedNum = snapshot.value as? Float})
         shapeLayer.path = circularPath2.cgPath
         shapeLayer.strokeColor = UIColor.green.cgColor
         shapeLayer.lineWidth = 20
         shapeLayer.fillColor = UIColor.clear.cgColor
         shapeLayer.lineCap = .round
-            shapeLayer.strokeEnd = CGFloat(Float(officerList.last!.temperature!) / Float(35))
+            shapeLayer.strokeEnd = CGFloat(Float(officerList.last!.temperature!) / dividedNum!)
         ProgressBarView.layer.addSublayer(shapeLayer)
         
             //the min circle to represent th number of aqi
         let circularPath3 = UIBezierPath(arcCenter: ProgressBarView.center, radius: 110, startAngle: -CGFloat.pi/2, endAngle: -CGFloat.pi/2 + 2 * CGFloat.pi, clockwise: true)
+            realtimeDB.child("office1").child("colour_temp").observeSingleEvent(of: .value, with: {(snapshot) in
+                self.dividedNum = snapshot.value as? Float})
         minLayer.path = circularPath3.cgPath
         minLayer.strokeColor = UIColor.blue.cgColor
         minLayer.lineWidth = 20
         minLayer.fillColor = UIColor.clear.cgColor
         minLayer.lineCap = .round
-        minLayer.strokeEnd = CGFloat(Float(officerList.last!.AQI!) / Float(50))
+        minLayer.strokeEnd = CGFloat(Float(officerList.last!.AQI!) / dividedNum!)
         ProgressBarView.layer.addSublayer(minLayer)
         
 //add the text of AQI number in the center of circle
@@ -189,18 +170,12 @@ class ViewController: UIViewController, DatabaseListener {
         textLayer.frame = CGRect(x: 100, y: 280, width: 200, height: 140)
         textLayer.fontSize = 100
         ProgressBarView.layer.addSublayer(textLayer)
-            
-            
-            
         colourLabel.text = "\(officerList.last!.colourTemperature!)"
         tempLabel.text = "\(officerList.last!.temperature!)"
-      //  aqiLabel.text = "\(officerList.last!.AQI!)"
-            
-        
+        aqiLabel.text = "\(officerList.last!.AQI!)"
         }
         else
         {
-            
         }
       }
     
@@ -228,32 +203,38 @@ class ViewController: UIViewController, DatabaseListener {
                    
                 // the biggest circle to represent the number of colourtemperature
                let circularPath = UIBezierPath(arcCenter: ProgressBarView.center, radius: 150, startAngle: -CGFloat.pi/2, endAngle: -CGFloat.pi/2 + 2 * CGFloat.pi, clockwise: true)
+                realtimeDB.child("office2").child("aqi").observeSingleEvent(of: .value, with: {(snapshot) in
+                self.dividedNum = snapshot.value as? Float})
                backgroundLayer.path = circularPath.cgPath
                backgroundLayer.strokeColor = UIColor.red.cgColor
                backgroundLayer.lineWidth = 20
                backgroundLayer.fillColor = UIColor.clear.cgColor
                backgroundLayer.lineCap = .round
-                   backgroundLayer.strokeEnd = CGFloat(Float(officerList.last!.colourTemperature!) / Float(10000))
+                   backgroundLayer.strokeEnd = CGFloat(Float(officerList.last!.colourTemperature!) / dividedNum!)
                ProgressBarView.layer.addSublayer(backgroundLayer)
                
                //the mid circle to represent th number of temperature
                let circularPath2 = UIBezierPath(arcCenter: ProgressBarView.center, radius: 130, startAngle: -CGFloat.pi/2, endAngle: -CGFloat.pi/2 + 2 * CGFloat.pi, clockwise: true)
+                realtimeDB.child("office2").child("temp").observeSingleEvent(of: .value, with: {(snapshot) in
+                self.dividedNum = snapshot.value as? Float})
                shapeLayer.path = circularPath2.cgPath
                shapeLayer.strokeColor = UIColor.green.cgColor
                shapeLayer.lineWidth = 20
                shapeLayer.fillColor = UIColor.clear.cgColor
                shapeLayer.lineCap = .round
-                   shapeLayer.strokeEnd = CGFloat(Float(officerList.last!.temperature!) / Float(35))
+                   shapeLayer.strokeEnd = CGFloat(Float(officerList.last!.temperature!) / dividedNum!)
                ProgressBarView.layer.addSublayer(shapeLayer)
                
                //the min circle to represent aqi number
                let circularPath3 = UIBezierPath(arcCenter: ProgressBarView.center, radius: 110, startAngle: -CGFloat.pi/2, endAngle: -CGFloat.pi/2 + 2 * CGFloat.pi, clockwise: true)
+                realtimeDB.child("office1").child("colour_temp").observeSingleEvent(of: .value, with: {(snapshot) in
+                self.dividedNum = snapshot.value as? Float})
                minLayer.path = circularPath3.cgPath
                minLayer.strokeColor = UIColor.blue.cgColor
                minLayer.lineWidth = 20
                minLayer.fillColor = UIColor.clear.cgColor
                minLayer.lineCap = .round
-               minLayer.strokeEnd = CGFloat(Float(officerList.last!.AQI!) / Float(50))
+               minLayer.strokeEnd = CGFloat(Float(officerList.last!.AQI!) / dividedNum!)
                ProgressBarView.layer.addSublayer(minLayer)
                
                //add the text of AQI number in the center of circle
@@ -264,6 +245,9 @@ class ViewController: UIViewController, DatabaseListener {
                textLayer.frame = CGRect(x: 100, y: 280, width: 200, height: 140)
                textLayer.fontSize = 100
                ProgressBarView.layer.addSublayer(textLayer)
+                colourLabel.text = "\(officerList.last!.colourTemperature!)"
+                tempLabel.text = "\(officerList.last!.temperature!)"
+                aqiLabel.text = "\(officerList.last!.AQI!)"
                }
                else
                {
@@ -294,32 +278,38 @@ class ViewController: UIViewController, DatabaseListener {
                    
                   // the biggest circle to represent the number of colourtemperature
                let circularPath = UIBezierPath(arcCenter: ProgressBarView.center, radius: 150, startAngle: -CGFloat.pi/2, endAngle: -CGFloat.pi/2 + 2 * CGFloat.pi, clockwise: true)
+                realtimeDB.child("warehouse").child("aqi").observeSingleEvent(of: .value, with: {(snapshot) in
+                self.dividedNum = snapshot.value as? Float})
                backgroundLayer.path = circularPath.cgPath
                backgroundLayer.strokeColor = UIColor.red.cgColor
                backgroundLayer.lineWidth = 20
                backgroundLayer.fillColor = UIColor.clear.cgColor
                backgroundLayer.lineCap = .round
-                   backgroundLayer.strokeEnd = CGFloat(Float(officerList.last!.colourTemperature!) / Float(10000))
+                   backgroundLayer.strokeEnd = CGFloat(Float(officerList.last!.colourTemperature!) / dividedNum!)
                ProgressBarView.layer.addSublayer(backgroundLayer)
                
                 //the mid circle to represent th number of temperature
                let circularPath2 = UIBezierPath(arcCenter: ProgressBarView.center, radius: 130, startAngle: -CGFloat.pi/2, endAngle: -CGFloat.pi/2 + 2 * CGFloat.pi, clockwise: true)
+                realtimeDB.child("warehouse").child("temp").observeSingleEvent(of: .value, with: {(snapshot) in
+                self.dividedNum = snapshot.value as? Float})
                shapeLayer.path = circularPath2.cgPath
                shapeLayer.strokeColor = UIColor.green.cgColor
                shapeLayer.lineWidth = 20
                shapeLayer.fillColor = UIColor.clear.cgColor
                shapeLayer.lineCap = .round
-                   shapeLayer.strokeEnd = CGFloat(Float(officerList.last!.temperature!) / Float(35))
+                   shapeLayer.strokeEnd = CGFloat(Float(officerList.last!.temperature!) / dividedNum!)
                ProgressBarView.layer.addSublayer(shapeLayer)
                
                 //the min circle to represent aqi number
                let circularPath3 = UIBezierPath(arcCenter: ProgressBarView.center, radius: 110, startAngle: -CGFloat.pi/2, endAngle: -CGFloat.pi/2 + 2 * CGFloat.pi, clockwise: true)
+                realtimeDB.child("warehouse").child("colour_temp").observeSingleEvent(of: .value, with: {(snapshot) in
+                self.dividedNum = snapshot.value as? Float})
                minLayer.path = circularPath3.cgPath
                minLayer.strokeColor = UIColor.blue.cgColor
                minLayer.lineWidth = 20
                minLayer.fillColor = UIColor.clear.cgColor
                minLayer.lineCap = .round
-               minLayer.strokeEnd = CGFloat(Float(officerList.last!.AQI!) / Float(50))
+               minLayer.strokeEnd = CGFloat(Float(officerList.last!.AQI!) / dividedNum!)
                ProgressBarView.layer.addSublayer(minLayer)
                
 //add the text of AQI number in the center of circle
@@ -330,6 +320,9 @@ class ViewController: UIViewController, DatabaseListener {
                textLayer.frame = CGRect(x: 100, y: 280, width: 200, height: 140)
                textLayer.fontSize = 100
                ProgressBarView.layer.addSublayer(textLayer)
+                colourLabel.text = "\(officerList.last!.colourTemperature!)"
+                tempLabel.text = "\(officerList.last!.temperature!)"
+                aqiLabel.text = "\(officerList.last!.AQI!)"
                }
                else
                {
@@ -337,6 +330,15 @@ class ViewController: UIViewController, DatabaseListener {
                }
           
       }
+    
+    
+    func changeView(ViewListener: String?)
+    {
+        let id = Firestore.firestore().collection(ViewListener!).document().documentID
+        
+        
+        
+    }
     
 //    @objc private func handleTap(){
 //        let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
