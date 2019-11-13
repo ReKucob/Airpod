@@ -90,11 +90,11 @@ class ChartViewController: UIViewController, DatabaseListener {
       
         switch(getIndex){
         case 1:
-            indexText = "Days"
-        case 2:
-            indexText = "month"
-        default:
             indexText = "days"
+        case 2:
+            indexText = "week"
+        default:
+            indexText = "month"
         }
     }
     
@@ -179,7 +179,7 @@ class ChartViewController: UIViewController, DatabaseListener {
         }
             
         // add chart content for weeks
-        else if (indexText == "weeks")
+        else if (indexText == "week")
         {
             let count = 7.0
             var number: Int? = 0
